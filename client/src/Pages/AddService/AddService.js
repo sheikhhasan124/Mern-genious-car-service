@@ -3,15 +3,32 @@ import { useForm } from "react-hook-form";
 
 const AddService = () => {
     const { register, handleSubmit } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    console.log(data)
+    const url = `http://localhost:5000/service`;
+    fetch(url,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data)
+    })
+    .then(res=>res.json())
+    .then(result=>{
+      console.log(result)
+    })
+  };
   
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("firstName", { required: true, maxLength: 20 })} />
-      <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
-      <input type="number" {...register("age", { min: 18, max: 99 })} />
-      <input type="submit" />
+       <div className='w-50 mx-auto'>
+            <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
+      <input placeholder='name' className='mb-2' {...register("name")} />
+      <input placeholder='description' className='mb-2' {...register("description")} />
+      <input placeholder='price' className='mb-2' type="number" {...register("price")} />
+      <input placeholder='Photo url' className='mb-2' type="text" {...register("img")} />
+      <input type="submit" value="add service" />
     </form>
+       </div>
     );
 };
 
