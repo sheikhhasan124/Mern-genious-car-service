@@ -13,6 +13,7 @@ import CheckOut from './Pages/CheckOut/CheckOut';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import Testing from './Pages/testing/Testing';
 import MyLocation from './Pages/MyLocation/MyLocation';
+import AddService from './Pages/AddService/AddService';
 
 const App = () => {
     return (
@@ -30,6 +31,11 @@ const App = () => {
                 <Route path="/checkout" element={
                    <RequireAuth>
                         <CheckOut></CheckOut>
+                   </RequireAuth>
+                }></Route>
+                <Route path="/addservice" element={
+                   <RequireAuth>
+                        <AddService></AddService>
                    </RequireAuth>
                 }></Route>
                 <Route path='*' element={<NotFound></NotFound>}></Route>
