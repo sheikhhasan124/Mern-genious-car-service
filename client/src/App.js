@@ -14,6 +14,7 @@ import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import Testing from './Pages/testing/Testing';
 import MyLocation from './Pages/MyLocation/MyLocation';
 import AddService from './Pages/AddService/AddService';
+import ManageService from './Pages/ManageService/ManageService';
 
 const App = () => {
     return (
@@ -36,6 +37,11 @@ const App = () => {
                 <Route path="/addservice" element={
                    <RequireAuth>
                         <AddService></AddService>
+                   </RequireAuth>
+                }></Route>
+                <Route path="/manage" element={
+                   <RequireAuth>
+                        <ManageService></ManageService>
                    </RequireAuth>
                 }></Route>
                 <Route path='*' element={<NotFound></NotFound>}></Route>

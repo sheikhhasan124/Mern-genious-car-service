@@ -31,7 +31,13 @@ const Header = () => {
           <Nav>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
             <Nav.Link as={Link} to="/location">location</Nav.Link>
+            {user && 
+           <>
+            <Nav.Link as={Link} to="/addservice">add</Nav.Link>
+            <Nav.Link as={Link} to="/manage">manage</Nav.Link>
+           </>
             
+            }
            {
              user? <Nav.Link  onClick={handleSignout}>sign out</Nav.Link>
              :
