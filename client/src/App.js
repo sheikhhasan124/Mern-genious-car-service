@@ -29,7 +29,7 @@ const App = () => {
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/location" element={<MyLocation></MyLocation>}></Route>
                 <Route path="/register" element={<Resister></Resister>}></Route>
-                <Route path="/checkout" element={
+                <Route path="/checkout/:serviceId" element={
                    <RequireAuth>
                         <CheckOut></CheckOut>
                    </RequireAuth>
