@@ -22,8 +22,8 @@ const AddService = () => {
     return (
        <div className='w-50 mx-auto'>
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-      <input placeholder='name' className='mb-2' {...register("name")} />
-      <input placeholder='description' className='mb-2' {...register("description")} />
+      <input placeholder='name' className='mb-2' type="text" {...register("name")} />
+      <input placeholder='description' className='mb-2' type="text" {...register("description")} />
       <input placeholder='price' className='mb-2' type="number" {...register("price")} />
       <input placeholder='Photo url' className='mb-2' type="text" {...register("img")} />
       <input type="submit" value="add service" />

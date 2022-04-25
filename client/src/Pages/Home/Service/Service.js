@@ -4,7 +4,7 @@ import './Service.css'
 
 
 const Service = ({service}) => {
-      const {_id,name, price, img,descreption}= service;
+      const {_id,name, price, img,description}= service;
 
       const navigate = useNavigate()
     const navigateServiceDetail = (_id) =>{
@@ -14,7 +14,7 @@ const Service = ({service}) => {
     return (
         <div className='service'>
               <h2>Name:{name}</h2>
-               <p>{descreption}</p>
+               <p>{description}</p>
                <h4>Price:{price}</h4>
                <img src={img} alt="" />
                <button onClick={() => navigateServiceDetail(_id)}>Hire:{name}</button>
