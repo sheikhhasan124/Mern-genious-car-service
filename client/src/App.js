@@ -15,6 +15,7 @@ import Testing from './Pages/testing/Testing';
 import MyLocation from './Pages/MyLocation/MyLocation';
 import AddService from './Pages/AddService/AddService';
 import ManageService from './Pages/ManageService/ManageService';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
     return (
@@ -47,6 +48,7 @@ const App = () => {
                 <Route path='*' element={<NotFound></NotFound>}></Route>
             </Routes>
             <Footer></Footer>
+            <ToastContainer />
         </div>
     );
 };

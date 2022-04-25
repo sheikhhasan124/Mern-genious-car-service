@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "./SocialLogin/SocialLogin";
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageTitle from "../Shared/PageTitle/PageTitle";
 
@@ -78,7 +78,7 @@ const Login = () => {
       <p>Haven't you register? <span onClick={navigateRegister} className="text-danger">Please register</span></p>
       <p>Forget password? <span onClick={resetPassword} className="text-danger">Reset Password</span></p>
       <SocialLogin></SocialLogin>
-      <ToastContainer />
+      
     </div>
   );
 };
