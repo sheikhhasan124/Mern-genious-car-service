@@ -17,6 +17,9 @@ async function run(){
     try{
         await client.connect();
         const serviceCollection = client.db('genious-car-service').collection('service')
+        const orderCollection = client.db('genious-car-service').collection('order')
+
+        //(crud) service API table / collection / schema
         //all data load from database
        app.get('/service',async(req,res)=>{
         const query ={};
@@ -42,6 +45,12 @@ async function run(){
             const id = req.params.id;
             const query = {_id:ObjectId(id)}
             const result = await serviceCollection.deleteOne(query);
+            res.send(result)
+        })
+          //(crud) order api table / collection / schema
+        app.post('/order', async(req,res)=>{
+            const order = req.body;
+            const result = await orderCollection.insertOne(order)
             res.send(result)
         })
     }
