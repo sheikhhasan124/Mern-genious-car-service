@@ -24,9 +24,9 @@ function verifyJWT(req,res,next){
         }
         console.log('decoded', decoded)
         req.decoded=decoded;
+        next()
     })
     // console.log('inside veryfied jwt',authHeader)
-    next()
 }
 
 
