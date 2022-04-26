@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../Hook/useToken';
 import SocialLogin from '../Login/SocialLogin/SocialLogin';
 import './Register.css'
 
@@ -14,6 +15,7 @@ const Resister = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth ,{sendEmailVerification:true});
+      const [token]= useToken(user)
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     // const [user, setUser]=useState({name:'', email:'', password:''})
     // const {name,email, password}=user;
@@ -24,10 +26,9 @@ const Resister = () => {
     const navigate = useNavigate()
   
        
-     if(user){
-   console.log(user)
-
-     }   
+     if(token){
+        navigate(`/home`)
+ }   
 
     const handleFormSubmit= async(event)=>{
         event.preventDefault()
@@ -37,7 +38,6 @@ const Resister = () => {
         // console.log(name, email, password)
        await createUserWithEmailAndPassword(email, password)
        await updateProfile({ displayName:name});
-       navigate(`/home`)
     //    alert('Updated profile');
         // console.log(user)
     }

@@ -8,19 +8,22 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageTitle from "../Shared/PageTitle/PageTitle";
 import axios from "axios";
+import useToken from "../../Hook/useToken";
 
 const Login = () => {
      const emailRef= useRef('')
      const passwordRef= useRef('')
-      const location = useLocation()
+     const location = useLocation()
      let from = location.state?.from?.pathname || "/";
      const [
-      signInWithEmailAndPassword,
-      user,
-      loading,
-      error,
-    ] = useSignInWithEmailAndPassword(auth);
-
+       signInWithEmailAndPassword,
+       user,
+       loading,
+       error,
+      ] = useSignInWithEmailAndPassword(auth);
+      
+      const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
+      const [token] = useToken(user)
     let errorElement;
     if(error){
       errorElement = <p className="text-danger">Error:{error?.message}</p>
@@ -32,20 +35,18 @@ const Login = () => {
         //  console.log(email, password)
         await signInWithEmailAndPassword(email, password)
         // jwt auth
-          const {data} = await axios.post('http://localhost:5000/login',{email})
-          // console.log(data)
-          localStorage.setItem('accessToken', data.accessToken);
-          navigate(from, { replace: true });
+          
+         
         }
        
         const navigate= useNavigate()
-        if(user){
-          // navigate(from, { replace: true });
+        if(token){
+          navigate(from, { replace: true });
         }
         const navigateRegister =()=>{
             navigate(`/register`)
         }
-        const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
+
         const resetPassword =async()=>{
           const email = emailRef.current.value;
           if(email){
